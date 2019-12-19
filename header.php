@@ -14,7 +14,6 @@
 	<head>
     <meta charset="<?php bloginfo('charset'); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="google-site-verification" content="l-tdW9_N2ALn2r1F7zZWDKWr_Yc-v8ICqaazXjqxfm4" />
    <title>
 <?php $the_title = wp_title(' - ', false); 
 if ($the_title != '') {
@@ -29,10 +28,7 @@ if ( (isset($paged) && $paged >= 2) )
     <?php if (akina_option('web_title') != '0') {
         $onblur_text = akina_option('onblur');
         $onfocus_text = akina_option('onfocus');
-    ?>
-   
-
-		
+    ?>	
     <?php } ?>
     <?php if (akina_option('akina_meta') == true) {
         $keywords = '';

@@ -28,8 +28,20 @@
         <!--显示底部加载所用时间-->
         <?php if (akina_option('load-timeshow') != '0') { ?>
             <div class="footer-device" id="TimeShow"></div>
-        <?php } ?>
-        <!--显示网站已运行多长时间-->
+        <?php } ?>       
+        <div class="footer-device"><?php echo akina_option('footer_info', ''); ?></div>
+        <div class="footer-device">
+            <?php
+            $statistics_link = akina_option('site_statistics_link') ? '<a href="' . akina_option('site_statistics_link') . '" target="_blank" rel="nofollow">Statistics</a>' : '';
+            $site_map_link = akina_option('site_map_link') ? '<a href="' . akina_option('site_map_link') . '" target="_blank" rel="nofollow">Sitemap</a>' : '';
+            printf(esc_html__('%1$s &nbsp; %2$s &nbsp; %3$s &nbsp; %4$s', 'akina'),$site_map_link,'<a href="https://www.liudank.top/archives/283" rel="designer" target="_blank" rel="nofollow">Theme</a>','<a href="https://wordpress.org/" target="_blank" rel="nofollow">WordPress</a>',$statistics_link);
+            ?></div>
+<div class="footer-device"><?php echo akina_option('copyrightlink') ? '<a href="http://www.beian.miit.gov.cn" target="_blank" rel="nofollow">' . akina_option('copyrightlink') . '</a>' : ''; ?><?php echo akina_option('beian_link') ? ' | <a href="'. akina_option('beian_link') .'" target="_blank" rel="nofollow"><img src="'. get_template_directory_uri() .'/images/beian.png" style="width:14px;weight:14px;"/>' . akina_option('beian_value') . '</a>' : ''; ?>
+<div>
+    <?php if (akina_option('echo_footer_time_log') == 'yes') { ?>数据库查询<?php echo get_num_queries(); ?>次，页面加载<?php timer_stop(1); ?>秒
+    <?php } ?>
+</div>
+		<!--显示网站已运行多长时间-->
         <?php if (akina_option('web_runtime') != '0') {
             $web_buildtime = akina_option('web_buildtime');
             ?>
@@ -57,22 +69,7 @@
                 </script>
             </div>
         <?php } ?>
-        <div class="footer-device"><?php echo akina_option('footer_info', ''); ?></div>
-        <div class="footer-device">
-            <?php
-            $statistics_link = akina_option('site_statistics_link') ? '<a href="' . akina_option('site_statistics_link') . '" target="_blank" rel="nofollow">Statistics</a>' : '';
-            $site_map_link = akina_option('site_map_link') ? '<a href="' . akina_option('site_map_link') . '" target="_blank" rel="nofollow">Sitemap</a>' : '';
-            printf(esc_html__('%1$s &nbsp; %2$s &nbsp; %3$s &nbsp; %4$s', 'akina'), $site_map_link, '<a href="http://www.liudank.top/sample-page/" rel="designer" target="_blank" rel="nofollow">Theme</a>', '<a href="https://wordpress.org/" target="_blank" rel="nofollow">WordPress</a>', $statistics_link);
-            ?>
-        </div>
-        <div class="footer-device"><?php echo akina_option('copyrightlink') ? '<a href="http://www.beian.miit.gov.cn" target="_blank" rel="nofollow">' . akina_option('copyrightlink') . '</a>' : ''; ?></div>
-				 	<div style="width:300px;margin:0 auto;">
-		 		<a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=41010502004178" style="display:inline-block;text-decoration:none;"><img src="https://qiniu.liudank.top/beian.png" style="float:left;"/><p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">豫公网安备 41010502004178号</p></a>
 		 	</div>
-		 
-				
-		 
-    </div><!-- .site-info -->
 </footer><!-- #colophon -->
 <div class="openNav">
     <div class="iconflat">
@@ -121,7 +118,6 @@
 		<p>正在玩命加载中...</p>
     </div>
 </div>
-
 <?php wp_footer(); ?>
 <?php if (akina_option('site_statistics')) { ?>
     <div class="site-statistics">
@@ -129,8 +125,6 @@
     </div>
 <?php } ?>
 <?php if (akina_option('focus_canvas_animinte') == 'waveloop') { ?>
-
-
 <!-- 波浪动画 -->
 <script type="text/javascript">
     $(function () {
@@ -188,16 +182,12 @@
     }, 1000);
 </script>
 <?php } ?>
-
-
-
 <script type="text/javascript">
         var t1 = new Date().getTime();
         if (!!window.ActiveXObject || "ActiveXObject" in window) { //is IE?
             alert('请抛弃万恶的IE系列浏览器吧！');
         };
     </script>
-
 <script type="text/javascript">
 		function rbq() { 
 			var audio = document.createElement('audio');
@@ -222,30 +212,17 @@
             setTimeout("document.title=title", 3000);
         }
     </script>
-
+<?php if(akina_option('music_id') && akina_option('music_res') ){?>
 <!-- 播放音乐需要引入 -->
-
-<!-- <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/css/APlayer.min.css">
+<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/css/APlayer.min.css">
 <script type="text/javascript" src="<?php echo get_stylesheet_directory_uri(); ?>/js/APlayer.min.js"></script>
-<script type="text/javascript" src="<?php echo get_stylesheet_directory_uri(); ?>/js/Meting.min.js"></script> -->
-<!-- 音乐播放器 -->	
-<!-- <meting-js
+<script type="text/javascript" src="<?php echo get_stylesheet_directory_uri(); ?>/js/Meting.min.js"></script>
+<meting-js
 	mini="true"
 	fixed="true"	   
-	server="netease"
+	server="<?php echo akina_option('music_res');?>"
 	type="playlist"
-	id="395671107"> 
-</meting-js> -->
-
-<!--360自动推送S-->
-<script>
-(function(){
-var src = "https://jspassport.ssl.qhimg.com/11.0.1.js?d182b3f28525f2db83acfaaf6e696dba";
-document.write('<script src="' + src + '" id="sozz"><\/script>');
-})();
-</script>
-<!--360自动推送E-->
-
-
+	id="<?php echo akina_option('music_id');?>"> 
+</meting-js><?php }?>
 	</body>
 </html>

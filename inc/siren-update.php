@@ -312,14 +312,12 @@ function the_headPattern(){
   <div class="pattern-attachment-img" style="background-image: url(<?php echo $full_image_url; ?>)"></div>
   <header class="pattern-header <?php if(is_single()){echo $header;} ?>"><?php echo $t; ?></header>
 </div>
-<?php else:
-$image_file = get_random_bg_url() ? 'background-image: url('.get_random_bg_url().');' : '';
-?>
+<?php elseif(akina_option('bgapi_post')):$image_file = get_random_bg_url() ? 'background-image: url('.get_random_bg_url().');' : 'background-image: url(https://img.liudank.top/featured/girls);';?>
 <div class="pattern-center <?php if(is_single()){echo $center;} ?>">
 <div class="pattern-attachment-img" style="object-fit: cover; <?php echo $image_file ?>"></div>
 <header class="pattern-header <?php if(is_single()){echo $header;} ?>"><?php echo $t; ?></header>
 </div>
-<?php endif; else :
+<?php  endif; else :
     echo '<div class="blank"></div>';
   endif;
 }

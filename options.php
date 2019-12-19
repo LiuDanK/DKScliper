@@ -12,7 +12,6 @@ function optionsframework_option_name() {
 	// 从样式表获取主题名称
 	$themename = wp_get_theme();
 	$themename = preg_replace("/\W/", "_", strtolower($themename) );
-
 	$optionsframework_settings = get_option( 'optionsframework' );
 	$optionsframework_settings['id'] = $themename;
 	update_option( 'optionsframework', $optionsframework_settings );
@@ -125,7 +124,6 @@ function optionsframework_options() {
 		'id' => 'akina_meta',
 		'std' => '0',
 		'type' => 'checkbox');
-		
 	$options[] = array(
 		'name' => __('网站关键词', 'options_framework_theme'),
 		'desc' => __('各关键字间用半角逗号","分割，数量在5个以内最佳。', 'options_framework_theme'),
@@ -150,7 +148,7 @@ function optionsframework_options() {
 		'name' => __('Favicon', 'options_framework_theme'),
 		'desc' => __('填写url地址', 'options_framework_theme'),
 		'id' => 'favicon_link',
-		'std' => '/wp-content/themes/Scilper/images/favicon.ico',
+		'std' => '/wp-content/themes/DKScliper/images/favicon.ico',
 		'type' => 'text');
 
 	$options[] = array(
@@ -221,23 +219,25 @@ function optionsframework_options() {
 		'name' => __('博主描述', 'options_framework_theme'),
 		'desc' => __('一段自我描述的话', 'options_framework_theme'),
 		'id' => 'admin_des',
-		'std' => '我们的征途是是星辰大海',
+		'std' => '心之所向，素履以往，念念不忘，必有回响。',
 		'type' => 'textarea');	
 
 	$options[] = array(
 		'name' => __('页脚信息', 'options_framework_theme'),
 		'desc' => __('页脚说明文字，支持HTML代码', 'options_framework_theme'),
 		'id' => 'footer_info',
-		'std' => '&copy; 2018',
+		'std' => '&copy; 2019',
 		'type' => 'textarea');
 		
-	$options[] = array(
-		'name' => __('页脚显示页面加载时间', 'options_framework_theme'),
-		'desc' => __('默认关闭，勾选开启', 'options_framework_theme'),
-		'id' => 'load-timeshow',
-		'std' => '0',
-		'type' => 'checkbox');
-	
+		$options[] = array(
+			'name' => __('开启页脚加载耗时', 'akina'),
+			'id' => 'echo_footer_time_log',
+			'std' => "no",
+			'type' => "radio",
+			'options' => array(
+				'yes' => __('开启', ''),
+				'no' => __('关闭', '')
+			));	
 	$options[] = array(
 		'name' => __('页脚显示网站运行时间', 'options_framework_theme'),
 		'desc' => __('默认关闭，勾选开启', 'options_framework_theme'),
@@ -254,7 +254,7 @@ function optionsframework_options() {
 	
 	$options[] = array(
 		'name' => __('站长统计', 'options_framework_theme'),
-		'desc' => __('填写统计代码，将被隐藏，如需要在下方填写链接地址', 'options_framework_theme'),
+		'desc' => __('填写统计代码，将被隐藏，如需要在下方填写链接地址，无需<script>标签', 'options_framework_theme'),
 		'id' => 'site_statistics',
 		'std' => '',
 		'type' => 'textarea');
@@ -273,13 +273,7 @@ function optionsframework_options() {
 		'std' => '',
 		'type' => 'text');
 		
-	$options[] = array(
-		'name' => __('ICP备案号', 'options_framework_theme'),
-		'desc' => __('填写已备案成功的ICP号', 'options_framework_theme'),
-		'id' => 'copyrightlink',
-		'std' => '',
-		'type' => 'text');
-
+	
 	$options[] = array(
 		'name' => __('自定义CSS样式', 'options_framework_theme'),
 		'desc' => __('直接填写CSS代码，不需要写style标签', 'options_framework_theme'),
@@ -302,7 +296,7 @@ function optionsframework_options() {
 	
 	$options[] = array(
 		'name' => __('开启Hitokoto（一言）', 'options_framework_theme'),
-		'desc' => __('默认关闭，勾选开启，显示主页info区域（10分钟/刷新可更换一次）', 'options_framework_theme'),
+		'desc' => __('默认关闭，勾选开启，显示主页info区域（10分钟/刷新可更换一次）和今日诗词冲突', 'options_framework_theme'),
 		'id' => 'scilper_hitokoto',
 		'std' => '0',
 		'type' => 'checkbox');
@@ -451,7 +445,7 @@ function optionsframework_options() {
 			'yes' => __('开启', ''),
 			'no' => __('关闭', '')
 		));	
-		
+	
 	$options[] = array(
 		'name' => __('文章点赞', 'akina'),
 		'id' => 'post_like',
@@ -895,5 +889,56 @@ function optionsframework_options() {
 		'std' => '0',
 		'type' => 'checkbox');
 
+	//LiuDanK
+	$options[] = array(
+		'name' => __('增强设置@LiuDanK.top', 'options_framework_theme'),
+		'type' => 'heading');
+	
+		$options[] = array(
+			'name' => __('开启今日诗词', 'options_framework_theme'),
+			'desc' => __('默认关闭，勾选开启，和一言冲突', 'options_framework_theme'),
+			'id' => 'scilper_jinrishici',
+			'std' => '0',
+			'type' => 'checkbox');
+
+			$options[] = array(
+				'name' => __('ICP备案号', 'options_framework_theme'),
+				'desc' => __('填写已备案成功的ICP号', 'options_framework_theme'),
+				'id' => 'copyrightlink',
+				'std' => '',
+				'type' => 'text');
+				$options[] = array(
+					'name' => __('网站公安备案号', 'options_framework_theme'),
+					'desc' => __('填写网站公安备案号', 'options_framework_theme'),
+					'id' => 'beian_value',
+					'std' => '',
+					'type' => 'text');
+					$options[] = array(
+						'name' => __('公安备案跳转链接', 'options_framework_theme'),
+						'desc' => __('填写公安备案跳转链接', 'options_framework_theme'),
+						'id' => 'beian_link',
+						'std' => '',
+						'type' => 'text');
+						$options[] = array(
+							'name' => __('无特色图时使用背景图API或图片链接', 'options_framework_theme'),
+							'desc' => __('请填写API完整地址，带http//或https//;>>>我提供了默认接口，赞！',
+							'options_framework_theme'),
+							'id' => 'bgapi_post',
+							'std' => 'https://img.liudank.top/featured/girls',
+							'type' => 'text');
+
+							$options[] = array(
+								'name' => __('音乐播放器音源', 'options_framework_theme'),
+								'desc' => __('请填写音乐平台代码:netease/tencent/kugou/xiami/baidu', 'options_framework_theme'),
+								'id' => 'music_res',
+								'std' => 'netease',
+								'type' => 'text');
+							$options[] = array(
+								'name' => __('音乐播放器歌单ID', 'options_framework_theme'),
+								'desc' => __('请填写歌单的id，自定义设置请参考https://www.liudank.top/archives/265', 'options_framework_theme'),
+								'id' => 'music_id',
+								'std' => '',
+								'type' => 'text');
 	return $options;
 }
+

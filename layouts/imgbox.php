@@ -12,9 +12,9 @@ $bg_style = akina_option('focus_height') ? 'background-position: center center;b
    		<?php if (akina_option('focus_logo')):?>
 	     <div class="header-tou"><a href="<?php bloginfo('url');?>" ><img src="<?php echo akina_option('focus_logo', ''); ?>"></a></div>
 	  	<?php else :?>
-         <div class="header-tou" ><a href="<?php bloginfo('url');?>"><img src="<?php bloginfo('template_url'); ?>/images/avatar.jpg"></a></div>	
-      	<?php endif; ?>
-		  <script src="http://www.liudank.top/wp-content/themes/Scilper/js/jinrishici.js" charset="utf-8"></script>
+         <div class="header-tou" ><a href="<?php bloginfo('url');?>"><img src="<?php bloginfo('template_url'); ?>/images/avatar.jpg"></a></div>
+		  <?php endif; if(akina_option('scilper_jinrishici')):?>
+		  <script src="<?php echo get_template_directory_uri() ?>/js/jinrishici.js" charset="utf-8"></script> <?php endif;?>
 		<div id="hitokoto" class="header-info animated"><p id="hitokoto_text" class="jinrishici-sentence"><?php echo akina_option('admin_des', 'Carpe Diem and Do what I like'); ?></p></div>
 		<div class="top-social">
 		<?php if (akina_option('wechat')){ ?>

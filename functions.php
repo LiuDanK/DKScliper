@@ -275,7 +275,7 @@ function akina_scripts() {
 		wp_enqueue_script( 'comment-reply' );
 	}
 	if ( akina_option('scilper_hitokoto') != '0' ) {
-		wp_enqueue_style( 'animateCSS', 'http://www.liudank.top/wp-content/themes/scilper/animate.min.css', array(), SIREN_VERSION ); 
+		wp_enqueue_style( 'animateCSS', get_template_directory_uri() .'/animate.min.css', array(), SIREN_VERSION ); 
 	}
 
 	// 20161116 @Louie
@@ -713,13 +713,6 @@ function scilper_author_link_request( $query_vars ) {
 }
 add_filter( 'request', 'scilper_author_link_request' );
 
-//TOC 支持
-function toc_support($content) {
-    $content =  str_replace('[toc]', '<div class="has-toc have-toc"></div>', $content); // TOC 支持
-    return $content;
-}
-add_filter('the_content', 'toc_support');
-
 /*
  * 图片自动添加alt属性
  */
@@ -861,26 +854,13 @@ function wpso_wechet_comment_notify($comment_id) {
 }  
 add_action('comment_post', 'wpso_wechet_comment_notify', 19, 2);
 
-/* 替换图片链接为 https */
-function https_image_replacer($content){
-	
-		/*已经验证使用 $_SERVER['SERVER_NAME']也可以获取到数据，但是貌似$_SERVER['HTTP_HOST']更好一点*/
-		$host_name = $_SERVER['HTTP_HOST'];
-		$http_host_name='http://qiniu.liudank.top/wp-content/uploads';
-		$https_host_name='https://qiniu.liudank.top/wp-content/uploads';
-		$content = str_replace($https_host_name,$http_host_name, $content);
-	
-	return $content;
-}
-add_filter('the_content', 'https_image_replacer');
-
 /* 面包屑 */
 
 function get_breadcrumbs()
 {
 global $wp_query;
 
-if ( !is_home() ){
+if (!is_home() ){
 
 // Start the UL
 echo '<ul class="breadcrumbs">';
@@ -935,12 +915,63 @@ echo '<li> &raquo; '. strip_tags( apply_filters( 'single_post_title', get_the_ti
 }
 }
 }
-
 // End the UL
 echo "</ul>";
 }
 }
 
+//TOC 支持
+function toc_support($content) {
+    $content =  str_replace('[toc]', '<div class="has-toc have-toc"></div>', $content); // TOC 支持
+    return $content;
+}
+add_filter('the_content', 'toc_support');
 
+/*
+ *	文章页面导航
+ */
+function article_index($content) {
+	$matches = array();
+	$ul_li = '';
+	//匹配出 h2、h3 标题
+	$rh = "/<h[23]>(.*)<\/h[23]>/im";
+	$h2_num = 0;
+	$h3_num = 0;
+	//判断是否是文章页
+	if(is_single() || !is_tag()){
+			   if(preg_match_all($rh, $content, $matches)) {
+					// 找到匹配的结果
+					foreach($matches[1] as $num => $title) {
+							$hx = substr($matches[0][$num], 0, 3);      //前缀，判断是 h2 还是 h3
+							$start = stripos($content, $matches[0][$num]);  //匹配每个标题字符串在文章中的起始位置
+							$end = strlen($matches[0][$num]);       //匹配每个标题字符串的长度
+							if($hx == "<h2"){
+									$h2_num += 1; //记录 h2 的序列，此效果请查看百度百科中的序号，如 1.1、1.2 中的第一位数
+									$h3_num = 0;
+									// 文章标题添加 id，便于目录导航的点击定位
+									$content = substr_replace($content, '<h2 id="h2-'.$num.'">'.$title.'</h2>',$start,$end);
+									$title = preg_replace('/<[^>]*>/', "", $title); //将 h2 里面的 a 链接或者其他标签去除，留下文字
+									$ul_li .= '<li class="h2_nav"><a href="#h2-'.$num.'" class="tooltip" title="'.$title.'"><span>'.$title."</span></a></li>\n";
+							}else if($hx == "<h3"){
+									$h3_num += 1; //记录 h3 的序列，此熬过请查看百度百科中的序号，如 1.1、1.2 中的第二位数
+									$content = substr_replace($content, '<h3 id="h3-'.$num.'">'.$title.'</h3>',$start,$end);
+									$title = preg_replace('/<[^>]*>/', "", $title); //将 h3 里面的 a 链接或者其他标签去除，留下文字
+									$ul_li .= '<li class="h3_nav"><a href="#h3-'.$num.'" class="tooltip" title="'.$title.'"><span>'.$title."</span></a></li>\n";
+							}   
+					}
+			}
+			// 将目录拼接到文章
+			if($ul_li){		
+			$content =  $content ."<div class=\"total_nav\"><div class=\"nav_icon breath_animation\"><div id =\"nav_icon\" >目录</div></div><div class=\"post_nav\"><ul class=\"post_nav_content\">\n" . $ul_li . "</ul></div></div>\n";
+			return $content;
+		   }else{
+				return $content;
+			}
+	}else if(is_home()){
+			return $content;
+	}
+	return $content;
+}
+//add_filter("the_content", "article_index");
 
 //code end 
