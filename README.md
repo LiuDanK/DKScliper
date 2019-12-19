@@ -1,4 +1,5 @@
-# Scilper (>^ω^<)
+
+# DKScilper (>^ω^<)
 
 ## 鸣谢
 > Wordpress Theme [Scilper](http://blog.skillcat.me/wordpress/271.html) 是基于 Akina 和 Siren 主题综合扩展而来的！
@@ -25,4 +26,4 @@
 
 > 在上传新主题/更新WordPress版本前备份数据库是一个良好的习惯（虽然主题并不会破坏你的数据，但毕竟是数据库，对吧？）。
 
-请留意[主题说明]()里的其他注意事项。
+请留意[主题说明](https://www.liudank.top/archives/283)里的其他注意事项。
