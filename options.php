@@ -907,19 +907,19 @@ function optionsframework_options() {
 				'id' => 'copyrightlink',
 				'std' => '',
 				'type' => 'text');
-				$options[] = array(
+			$options[] = array(
 					'name' => __('网站公安备案号', 'options_framework_theme'),
 					'desc' => __('填写网站公安备案号', 'options_framework_theme'),
 					'id' => 'beian_value',
 					'std' => '',
 					'type' => 'text');
-					$options[] = array(
+			$options[] = array(
 						'name' => __('公安备案跳转链接', 'options_framework_theme'),
 						'desc' => __('填写公安备案跳转链接', 'options_framework_theme'),
 						'id' => 'beian_link',
 						'std' => '',
 						'type' => 'text');
-						$options[] = array(
+			$options[] = array(
 							'name' => __('无特色图时使用背景图API或图片链接', 'options_framework_theme'),
 							'desc' => __('请填写API完整地址，带http//或https//;>>>我提供了默认接口，赞！',
 							'options_framework_theme'),
@@ -927,13 +927,13 @@ function optionsframework_options() {
 							'std' => 'https://img.liudank.top/featured/girls',
 							'type' => 'text');
 
-							$options[] = array(
+			$options[] = array(
 								'name' => __('音乐播放器音源', 'options_framework_theme'),
 								'desc' => __('请填写音乐平台代码:netease/tencent/kugou/xiami/baidu', 'options_framework_theme'),
 								'id' => 'music_res',
 								'std' => 'netease',
 								'type' => 'text');
-							$options[] = array(
+			$options[] = array(
 								'name' => __('音乐播放器歌单ID', 'options_framework_theme'),
 								'desc' => __('请填写歌单的id，自定义设置请参考https://www.liudank.top/archives/265', 'options_framework_theme'),
 								'id' => 'music_id',
