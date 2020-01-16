@@ -865,7 +865,7 @@ if (!is_home() ){
 // Start the UL
 echo '<ul class="breadcrumbs">';
 // Add the Home link
-echo '<li><a href="'. get_settings('home') .'">首页</a></li>';
+echo '<li>当前位置：<a href="'. get_settings('home') .'">首页</a></li>';
 
 if ( is_category() )
 {

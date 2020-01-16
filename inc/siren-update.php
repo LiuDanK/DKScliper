@@ -351,7 +351,7 @@ function header_user_menu(){
   <?php
   }else{ 
     $ava = get_template_directory_uri().'/images/none.png';
-    $login_url = akina_option('exlogin_url') ? akina_option('exlogin_url') : get_bloginfo('url').'/login/';
+    $login_url = akina_option('exlogin_url') ? akina_option('exlogin_url') : get_bloginfo('url').'/wp-login.php';
   ?>
   <div class="header-user-avatar">
     <a href="<?php echo $login_url; ?>">
@@ -359,7 +359,7 @@ function header_user_menu(){
     </a>
     <div class="header-user-menu">
       <div class="herder-user-name no-logged">是否要立即登录？<br />
-        <a href="<?php echo $login_url; ?>">立即登录？</a>
+        <a href="/wp-login.php"></a>
       </div>
     </div>
   </div>
