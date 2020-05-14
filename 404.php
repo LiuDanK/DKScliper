@@ -1,10 +1,7 @@
 <?php
 /**
- * The template for displaying 404 pages (not found).
- *
- * @link https://codex.wordpress.org/Creating_an_Error_404_Page
- *
- * @package Akina
+ * 404 页面,来源于 github  
+ * LiuDanK 修改
  */
 
 ?>
@@ -247,10 +244,6 @@
         '<h1>😭&nbsp;&nbsp;您访问页面找不到啦</h1><p>🏠您可以返回首页<a href="/">https://www.liudank.cn</a><br>📧发邮件吐槽一下<a href="mailto:liudank666@163.com">liudank666@163.com</a><br>或者...<br>🐱‍🐉玩一会小恐龙快跑&nbsp;&nbsp;&nbsp;&nbsp;<br>按<span>空格(space)</span><span>上(↑)</span><span>下(↓)</span><span>左(←)</span><span>右(→)</span>键试试</p>'
 </script>
 <script>
-function try_html()
- {
-    window.location.href=window.location.href+'.html';
- }
 
 function onload()
 {

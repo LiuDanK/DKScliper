@@ -891,7 +891,7 @@ function optionsframework_options() {
 
 	//LiuDanK
 	$options[] = array(
-		'name' => __('增强设置@LiuDanK.top', 'options_framework_theme'),
+		'name' => __('增强设置@LiuDanK', 'options_framework_theme'),
 		'type' => 'heading');
 	
 		$options[] = array(
