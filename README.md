@@ -5,7 +5,7 @@
 > Wordpress Theme [Scilper](http://blog.skillcat.me/wordpress/271.html) 是基于 Akina 和 Siren 主题综合扩展而来的！
 > 首先膜拜一下[Fuzzz](http://fui.im/) 和 [路易](https://www.cssplus.org)两位大佬写出这么棒（diao）的主题（[查看原始主题](https://github.com/louie-senpai/Siren) ）。<br>
 > 再次鸣谢[keith](http://skyarea.cn) 结合出[ASky](http://skyarea.cn/archives/466) 这么棒的主题，真是一个比一个会玩，厉害...<br>
-> 最后也要感谢小猫博客将ASky再次修改,并产出综合扩展版本，其修改增加好玩而简单的效果！小猫的网站挂了，我不放链接了。
+> 最后也要感谢小猫博客将ASky再次修改,并产出综合扩展版本，其修改增加好玩而简单的效果！。
 
 # LiuDanK 修改
 > 既然是我接手修改了，版本号就重新开了 ，任性 O(∩_∩)O哈哈~
